@@ -296,22 +296,22 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RunTests(filename)
     " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :w
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    # :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1
         exec ":!script/features " . a:filename
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
         elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
+            exec ":!bundle exec rspec --color --drb " . a:filename
         else
-            exec ":!rspec --color " . a:filename
+            exec ":!rspec --color --drb " . a:filename
         end
     end
 endfunction
@@ -444,3 +444,4 @@ function! QuoteSwitcher()
 endfunction
 
 nnoremap <leader>qs :call QuoteSwitcher()<cr>
+nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/g<cr>
