@@ -446,9 +446,3 @@ endfunction
 nnoremap <leader>qs :call QuoteSwitcher()<cr>
 nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
 
-" http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
