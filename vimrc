@@ -436,6 +436,8 @@ nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
 " nnoremap <leader>ne :NERDTreeToggle<cr>
 
 " NERDTree settings
-nmap wm :NERDTree<cr>
+nmap wm :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.swp$']
 
+" https://github.com/kien/ctrlp.vim/issues/78
+let g:ctrlp_dont_split = 'nerdtree'
