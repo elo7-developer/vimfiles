@@ -445,4 +445,4 @@ endfunction
 
 nnoremap <leader>qs :call QuoteSwitcher()<cr>
 nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
-
+nnoremap <leader>ne :NERDTreeToggle<cr>
