@@ -249,21 +249,8 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
+" MAPS TO JUMP TO SPECIFIC CtrlP TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-"map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-"map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-"map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-"map <leader>gp :CommandTFlush<cr>\|:CommandT app/presenters<cr>
-"map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-"map <leader>gC :CommandTFlush<cr>\|:CommandT config<cr>
-"map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-"map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-"map <leader>gg :topleft 100 :split Gemfile<cr>
-"map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
-"map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
-"map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>t :CtrlP .<cr>
 map <leader>T :CtrlP .<cr>
 
@@ -445,4 +432,10 @@ endfunction
 
 nnoremap <leader>qs :call QuoteSwitcher()<cr>
 nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
-nnoremap <leader>ne :NERDTreeToggle<cr>
+
+" nnoremap <leader>ne :NERDTreeToggle<cr>
+
+" NERDTree settings
+nmap wm :NERDTree<cr>
+let NERDTreeIgnore=['\.swp$']
+
