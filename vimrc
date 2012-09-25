@@ -433,12 +433,35 @@ endfunction
 nnoremap <leader>qs :call QuoteSwitcher()<cr>
 nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
 
-" nnoremap <leader>ne :NERDTreeToggle<cr>
-
+"https://github.com/chad/vimfiles/blob/master/vimrc
 " NERDTree settings
+" " Enable nice colors
+let NERDChristmasTree = 1
+
+" " Make it easy to see where we are
+let NERDTreeHighlightCursorline = 1
+"
+" " Make bookmarks visible
+let NERDTreeShowBookmarks = 1
+"
+" " Show hidden files
+let NERDTreeShowHidden = 1
+"
+" " Don't hijack NETRW
+"let NERDTreeHijackNetrw = 0
+let NERDTreeIgnore=['\.$', '\~$']
+"
+" " Make F2 open NERDTree
+"nmap <F2> :NERDTreeToggle<CR>
+
 nmap wm :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\.swp$']
+"let NERDTreeIgnore=['\.swp$']
 
 " https://github.com/kien/ctrlp.vim/issues/78
 "let g:ctrlp_dont_split = 'nerdtree'
 let g:ctrlp_dont_split = 'NERD_tree_2'
+
+" NERDCommenter
+let NERDDefaultNesting = 0
+let NERDSpaceDelims = 1
+let NERDRemoveExtraSpaces = 1
