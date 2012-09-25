@@ -440,4 +440,5 @@ nmap wm :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.swp$']
 
 " https://github.com/kien/ctrlp.vim/issues/78
-let g:ctrlp_dont_split = 'nerdtree'
+"let g:ctrlp_dont_split = 'nerdtree'
+let g:ctrlp_dont_split = 'NERD_tree_2'
