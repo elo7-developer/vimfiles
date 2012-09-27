@@ -442,7 +442,7 @@ let NERDChristmasTree = 1
 let NERDTreeHighlightCursorline = 1
 "
 " " Make bookmarks visible
-let NERDTreeShowBookmarks = 1
+" let NERDTreeShowBookmarks = 1
 "
 " " Show hidden files
 let NERDTreeShowHidden = 1
@@ -454,7 +454,7 @@ let NERDTreeIgnore=['\.$', '\~$']
 " " Make F2 open NERDTree
 "nmap <F2> :NERDTreeToggle<CR>
 
-nmap wm :NERDTreeToggle<cr>
+nmap <F2> :NERDTreeToggle<cr>
 "let NERDTreeIgnore=['\.swp$']
 
 " https://github.com/kien/ctrlp.vim/issues/78
