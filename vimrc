@@ -88,7 +88,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 " OS X-like space bar to scroll.
-nnoremap <Space> <C-F>
+" nnoremap <Space> <C-F>
+" nnoremap <S-Space> <C-B>
 
 " <Leader><space> turns off search highlighting.
 nnoremap <Leader><space> :noh<CR>
@@ -102,6 +103,11 @@ nnoremap <Leader>kws :%s/\s\+$//<CR>
 noremap <leader>y "*y
 noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+
+" http://vim.devth.com/put-paste-above-below
+" http://stackoverflow.com/questions/1346737/how-to-paste-in-a-new-line-with-vim
+nmap <leader>po o<Esc>p==
+nmap <leader>pO O<Esc>p==
 
 " Emacs bindings in command line mode
 cnoremap <c-a> <home>
@@ -194,8 +200,12 @@ nmap <silent> <unique> <Leader>af :AckFile
 " Tabularize
 "if exists(':Tabularize')
 "           ^^^^^^^^^^^^ for some reason Tabularize hasn't loaded when Vim gets here
+" key = value
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
+" key { value
+nmap <Leader>t{ :Tabularize /{<CR>
+vmap <Leader>t{ :Tabularize /{<CR>
 " key => value
 nmap <Leader>t> :Tabularize /=><CR>
 vmap <Leader>t> :Tabularize /=><CR>
