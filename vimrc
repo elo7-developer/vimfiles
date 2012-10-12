@@ -166,22 +166,22 @@ map  <Del>   :bd<CR>
 " See also here for a different solution:
 " http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 if (&termencoding == "utf-8") || has("gui_running")
-  if v:version >= 700
-    if has("gui_running")
-      set list listchars=tab:»·,trail:·,extends:…,nbsp:‗
-    else
-      " xterm + terminus hates these
-      set list listchars=tab:»·,trail:·,extends:>,nbsp:_
-    endif
-  else
-    set list listchars=tab:»·,trail:·,extends:…
-  endif
+if v:version >= 700
+if has("gui_running")
+  set list listchars=tab:»·,trail:·,extends:…,nbsp:‗
 else
-  if v:version >= 700
-    set list listchars=tab:>-,trail:.,extends:>,nbsp:_
-  else
-    set list listchars=tab:>-,trail:.,extends:>
-  endif
+  " xterm + terminus hates these
+  set list listchars=tab:»·,trail:·,extends:>,nbsp:_
+endif
+else
+set list listchars=tab:»·,trail:·,extends:…
+endif
+else
+if v:version >= 700
+set list listchars=tab:>-,trail:.,extends:>,nbsp:_
+else
+set list listchars=tab:>-,trail:.,extends:>
+endif
 endif
 
 "
@@ -215,6 +215,9 @@ vmap <Leader>t: :Tabularize /:\zs<CR>
 " Ruby symbols
 nmap <Leader>ts :Tabularize /:/l1c0l0<CR>
 vmap <Leader>ts :Tabularize /:/l1c0l0<CR>
+" key, value
+nmap <Leader>t, :Tabularize /,<CR>
+vmap <Leader>t, :Tabularize /,<CR>
 
 " a few useful shortcuts - taken from https://github.com/lsdr/vim-folder/blob/master/_vimrc :)
 command! Rehash source ~/.vimrc
@@ -352,7 +355,7 @@ endfunction
 map <leader>s :call RunTestFile()<cr>
 map <leader>S :call RunNearestTest()<cr>
 map <leader>b :call RunTestFileNoRails()<cr>
-map <leader>a :call RunTests('')<cr>
+map <leader>a :call RunTests('spec')<cr>
 " map <leader>c :w\|:!script/features<cr>
 " map <leader>w :w\|:!script/features --profile wip<cr>
 
@@ -409,39 +412,7 @@ endfunction
 
 nnoremap <leader>. :call SpecSwitcher()<cr>
 
-" Wrap the word under the cursor in quotes.  If in ruby mode,
-" cycle between quoting styles and symbols.
-"
-" variable -> "variable" -> 'variable' -> :variable
-"
-function! QuoteSwitcher()
-  let l:type = strpart( expand("<cWORD>"), 0, 1 )
-  let l:word = expand("<cword>")
-
-  if l:type == '"'
-    " Double quote to single
-    execute ":normal viWc'" . l:word . "'"
-
-  elseif l:type == "'"
-    if &ft == 'ruby' || &ft == 'rspec'
-      " Single quote to symbol
-      execute ':normal viWc:' . l:word
-    else
-      " Single quote to double
-      execute ':normal viWc"' . l:word . '"'
-    end
-
-  else
-    " Whatever to double quote
-    execute ':normal viWc"' . l:word . '"'
-  endif
-
-  " Move the cursor back into the cl:word
-  call cursor( 0, getpos('.')[2] - 1 )
-endfunction
-
-nnoremap <leader>qs :call QuoteSwitcher()<cr>
-nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/"\2"/"\3"/g<cr>
+nnoremap <leader>dq :%s/\A'\([^"\|^']*\)'/"\1"/<cr>
 
 "https://github.com/chad/vimfiles/blob/master/vimrc
 " NERDTree settings
@@ -468,7 +439,7 @@ nmap <F2> :NERDTreeToggle<cr>
 "let NERDTreeIgnore=['\.swp$']
 
 " https://github.com/kien/ctrlp.vim/issues/78
-"let g:ctrlp_dont_split = 'nerdtree'
+" let g:ctrlp_dont_split = 'nerdtree'
 let g:ctrlp_dont_split = 'NERD_tree_2'
 
 " NERDCommenter
