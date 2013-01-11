@@ -76,6 +76,8 @@ set noequalalways                 " Resize windows as little as possible.
 set autoread                      " Automatically re-read files changed outside Vim.
 
 set t_Co=256 " 256 colors
+" set background=light
+" colorscheme morning
 set background=dark
 colorscheme badwolf
 
@@ -412,7 +414,7 @@ endfunction
 
 nnoremap <leader>. :call SpecSwitcher()<cr>
 
-nnoremap <leader>dq :%s/\A'\([^"\|^']*\)'/"\1"/<cr>
+nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/<cr>
 
 "https://github.com/chad/vimfiles/blob/master/vimrc
 " NERDTree settings
@@ -446,3 +448,5 @@ let g:ctrlp_dont_split = 'NERD_tree_2'
 let NERDDefaultNesting = 0
 let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
+
+nmap gg=G gg=G```
