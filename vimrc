@@ -449,4 +449,7 @@ let NERDDefaultNesting = 0
 let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
 
-nmap gg=G gg=G```
+" nmap gg=G gg=G``<CR>
+
+map <Leader>ctall :!ctags --extra=+f -R *<CR><CR>
+map <Leader>ct :!ctags --extra=+f -R app/<CR><CR>
