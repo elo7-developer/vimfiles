@@ -39,8 +39,6 @@ set wildmode=longest,list:longest " Complete files like a shell.
 
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,*.jpg,*.jpeg,*.png,*.gif,vendor/**,db/sphinx,log/**,tmp/**,public/uploads,coverage/**
 
-let g:ctrlp_custom_ignore = "vendor"
-
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 set incsearch                     " Highlight matches as you type.
@@ -82,8 +80,6 @@ set background=dark
 colorscheme badwolf
 
 let g:sql_type_default = "mysql"
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Very magic regexes.
 nnoremap / /\v
@@ -263,21 +259,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MAPS TO JUMP TO SPECIFIC CtrlP TARGETS AND FILES
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>t :CtrlP .<cr>
-map <leader>T :CtrlP .<cr>
-
-map <leader>ga :CtrlP app/assets<cr>
-map <leader>gc :CtrlP app/controllers<cr>
-map <leader>gh :CtrlP app/helpers<cr>
-map <leader>gm :CtrlP app/models<cr>
-map <leader>gp :CtrlP app/presenters<cr>
-map <leader>gv :CtrlP app/views<cr>
-map <leader>gC :CtrlP config<cr>
-map <leader>gl :CtrlP lib<cr>
-map <leader>gs :CtrlP spec<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -416,33 +397,28 @@ nnoremap <leader>. :call SpecSwitcher()<cr>
 
 nnoremap <leader>dq :%s/'\([^"\|^']*\)'/"\1"/<cr>
 
-"https://github.com/chad/vimfiles/blob/master/vimrc
-" NERDTree settings
-" " Enable nice colors
-let NERDChristmasTree = 1
+let g:ctrlp_custom_ignore = "vendor"
+" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" " Make it easy to see where we are
-let NERDTreeHighlightCursorline = 1
-"
-" " Make bookmarks visible
-" let NERDTreeShowBookmarks = 1
-"
-" " Show hidden files
-let NERDTreeShowHidden = 1
-"
-" " Don't hijack NETRW
-"let NERDTreeHijackNetrw = 0
-let NERDTreeIgnore=['\.$', '\~$']
-"
-" " Make F2 open NERDTree
-"nmap <F2> :NERDTreeToggle<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MAPS TO JUMP TO SPECIFIC CtrlP TARGETS AND FILES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" map <leader>t :CtrlP .<cr>
+" map <leader>T :CtrlP .<cr>
 
-nmap <F2> :NERDTreeToggle<cr>
-"let NERDTreeIgnore=['\.swp$']
+" map <leader>ga :CtrlP app/assets<cr>
+" map <leader>gc :CtrlP app/controllers<cr>
+" map <leader>gh :CtrlP app/helpers<cr>
+" map <leader>gm :CtrlP app/models<cr>
+" map <leader>gp :CtrlP app/presenters<cr>
+" map <leader>gv :CtrlP app/views<cr>
+" map <leader>gC :CtrlP config<cr>
+" map <leader>gl :CtrlP lib<cr>
+" map <leader>gs :CtrlP spec<cr>
 
-" https://github.com/kien/ctrlp.vim/issues/78
-" let g:ctrlp_dont_split = 'nerdtree'
-let g:ctrlp_dont_split = 'NERD_tree_2'
+
 
 " NERDCommenter
 let NERDDefaultNesting = 0
